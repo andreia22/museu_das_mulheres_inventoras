@@ -1,0 +1,264 @@
+body {
+    /* Um degradê que vai do Marrom Café ao Âmbar Escuro */
+    background: radial-gradient(circle, #2c1e14 0%, #1a0f0a 100%);
+    background-attachment: fixed;
+    /* O fundo não mexe quando você rola a tela */
+    color: #e0d0b0;
+    /* Um bege clarinho para o texto não ficar branco "gelo" */
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Sugestão para o Header combinar com esse novo fundo */
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #3d2b1f, transparent);
+    border-bottom: 2px solid #c5a059;
+}
+
+/* Deixar os textos das informações um pouco mais amarelados (âmbar) */
+.info-inventora p {
+    color: #c2b280;
+    /* Tom de areia/âmbar claro */
+    font-size: 1.1rem;
+}
+
+h1 {
+    color: #c5a059;
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* A LINHA DO TEMPO (MENU DE NAVEGAÇÃO) */
+.nav-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.ponto-tempo {
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.ponto-tempo:hover,
+.ponto-tempo.ativo {
+    color: #c5a059;
+    border-bottom: 2px solid #c5a059;
+}
+
+/* ESTRUTURA DO CARROSSEL (EXPOSIÇÃO) */
+.container-museu {
+    max-width: 1000px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.trilho {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.card-inventora {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.moldura-foto {
+    display: inline-block;
+    /* Faz a moldura ter o tamanho exato do conteúdo */
+    max-width: 90%;
+    /* Não deixa a moldura encostar nas bordas da tela */
+    border: 2px solid #c5a059;
+    padding: 10px;
+    background-color: #0f0f0f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    /* Centraliza a moldura */
+}
+
+.moldura-foto img {
+    display: block;
+    /* Remove espaços extras abaixo da imagem */
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    /* Garante que não ultrapasse a largura da moldura */
+    max-height: 60vh;
+    /* Limita a altura a 60% da altura da tela do aluno */
+    filter: sepia(15%);
+}
+
+.moldura-foto img {
+    width: auto;
+    /* Largura automática para não esticar dos lados */
+    max-width: 100%;
+    /* Não deixa a imagem sair da moldura */
+    height: auto;
+    /* Altura automática para manter a proporção real */
+    max-height: 450px;
+    /* Limita a altura para o museu ficar organizado */
+    display: block;
+    margin: 0 auto;
+    /* Centraliza a foto na moldura */
+    object-fit: contain;
+    /* Garante que a foto caiba inteira sem cortes */
+    background-color: #000;
+    filter: sepia(20%);
+    /* Um toque leve de museu antigo */
+}
+
+.info-inventora {
+    text-align: center;
+    max-width: 700px;
+    margin-top: 30px;
+}
+
+.info-inventora h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+
+.info-inventora p {
+    color: #c2b280;
+    font-size: 1.5rem;
+    /* ALTERE AQUI: Aumentei para 1.5rem para ficar bem legível */
+    line-height: 1.6;
+    /* DICA: Adicione isso para dar espaço entre as linhas */
+    margin-top: 15px;
+}
+
+.info-inventora .data-destaque {
+    color: #c5a059;
+    font-style: italic;
+    display: block;
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #444;
+    font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --- CONFIGURAÇÃO PARA TELAS GRANDES (Computadores) --- */
+@media (min-width: 1024px) {
+    .container-museu {
+        max-width: 1000px;
+        /* Limita a largura no PC para não esticar demais */
+    }
+
+    .info-inventora p {
+        font-size: 1.4rem;
+        /* Texto confortável para leitura no monitor */
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+/* --- CONFIGURAÇÃO PARA TABLETS (Telas Médias) --- */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .container-museu {
+        max-width: 90%;
+    }
+
+    .info-inventora p {
+        font-size: 1.2rem;
+    }
+
+    .moldura-foto img {
+        max-height: 400px;
+        /* Diminui um pouco a foto para caber o texto */
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-timeline {
+        display: grid;
+        /* Muda de linha para grade */
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        /* Cria colunas automáticas */
+        gap: 8px;
+        padding: 10px;
+        justify-content: center;
+        overflow-x: hidden;
+        /* Para de cortar pros lados */
+        white-space: normal;
+        /* Permite quebrar linha */
+    }
+
+
+
+
+
+
+    h1 {
+        font-size: 1.8rem;
+        /* Título menor para não quebrar linha feio */
+        letter-spacing: 2px;
+    }
+
+    .nav-timeline {
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .ponto-tempo {
+        font-size: 0.8rem;
+        /* Anos menores na barra de navegação */
+    }
+
+    .card-inventora {
+        padding: 15px;
+        /* Menos espaço lateral */
+    }
+
+    .moldura-foto img {
+        max-height: 300px;
+        /* Foto menor para o texto aparecer sem rolar muito */
+    }
+
+    .info-inventora h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-inventora p {
+        font-size: 1rem;
+        /* Texto menor para caber na tela do celular */
+        line-height: 1.4;
+    }
+}
