@@ -297,14 +297,14 @@ footer {
 
     /* --- AJUSTE DA NAV (ANOS) NO CELULAR --- */
     .nav-timeline {
-        padding: 5px;
+        padding: 2px;
         /* Menos espaço em volta dos anos */
-        gap: 5px;
+        gap: 2px;
         /* Anos mais próximos um do outro */
     }
 
     .ponto-tempo {
-        padding: 8px 12px;
+        padding: 4px 4px;
         font-size: 0.85rem;
         /* Fonte menor para caber mais anos na visão */
     }
