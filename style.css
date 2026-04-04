@@ -53,7 +53,7 @@ h1 {
     font-size: 0.9rem;
     transition: 0.3s;
     padding: 5px 10px;
-    border-bottom: 2px solid transparent;
+    border-bottom: none !important;
 }
 
 .ponto-tempo:hover,
