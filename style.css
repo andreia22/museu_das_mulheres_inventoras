@@ -216,8 +216,10 @@ footer {
 @media (max-width: 767px) {
     .nav-timeline {
         display: grid;
+        grid-template-columns: repeat(4, 1fr);
         /* Muda de linha para grade */
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        justify-items: center;
+        align-items: center;
         /* Cria colunas automáticas */
         gap: 8px;
         padding: 10px;
@@ -268,14 +270,6 @@ footer {
 
 
 
-
-
-
-
-
-
-
-
 /* --- AJUSTE DO HEADER NO CELULAR --- */
 @media (max-width: 767px) {
     header {
@@ -297,6 +291,7 @@ footer {
 
     /* --- AJUSTE DA NAV (ANOS) NO CELULAR --- */
     .nav-timeline {
+
         padding: 2px;
         /* Menos espaço em volta dos anos */
         gap: 2px;
