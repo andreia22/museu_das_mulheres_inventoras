@@ -67,12 +67,17 @@ h1 {
     max-width: 1000px;
     margin: 40px auto;
     overflow: hidden;
+    touch-action: pan-y;
 }
 
 .trilho {
     display: flex;
     transition: transform 0.7s cubic-bezier(0.45, 0, 0.55, 1);
+    will-change: transform;
 }
+
+
+
 
 .card-inventora {
     min-width: 100%;

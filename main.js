@@ -2,22 +2,29 @@ let seletorIndice = 0;
 let toqueInicialX = 0;
 let toqueFinalX = 0;
 
+// Função principal para mudar de slide
 function irPara(indice) {
-    seletorIndice = indice; // Atualiza o rastreador
     const trilho = document.getElementById('trilho');
     const pontos = document.querySelectorAll('.ponto-tempo');
+    const totalCards = document.querySelectorAll('.card-inventora').length;
 
-    // Move o carrossel
-    trilho.style.transform = `translateX(${-indice * 100}%)`;
+    // Impede que o índice saia dos limites
+    if (indice < 0) indice = 0;
+    if (indice >= totalCards) indice = totalCards - 1;
 
-    // Atualiza a cor do ano
+    seletorIndice = indice;
+
+    // Move o trilho (Carrossel)
+    trilho.style.transform = `translateX(${-seletorIndice * 100}%)`;
+
+    // Atualiza a barra de anos (Destaque)
     pontos.forEach(p => p.classList.remove('ativo'));
-    pontos[indice].classList.add('ativo');
+    if (pontos[seletorIndice]) {
+        pontos[seletorIndice].classList.add('ativo');
 
-    // Scroll suave da barra de anos para o ano ativo não sumir
-    const nav = document.querySelector('.nav-timeline');
-    const pontoAtivo = pontos[indice];
-    if (nav && pontoAtivo) {
+        // Faz a barra de anos deslizar sozinha para o ano ativo aparecer
+        const nav = document.querySelector('.nav-timeline');
+        const pontoAtivo = pontos[seletorIndice];
         nav.scrollTo({
             left: pontoAtivo.offsetLeft - (nav.offsetWidth / 2) + (pontoAtivo.offsetWidth / 2),
             behavior: 'smooth'
@@ -25,34 +32,26 @@ function irPara(indice) {
     }
 }
 
-// --- LÓGICA PARA DESLIZAR COM O DEDO ---
-
+// --- DETECÇÃO DE TOQUE (SWIPE) ---
 const container = document.querySelector('.container-museu');
-const totalCards = document.querySelectorAll('.card-inventora').length;
 
-container.addEventListener('touchstart', e => {
-    toqueInicialX = e.changedTouches[0].screenX;
+container.addEventListener('touchstart', (e) => {
+    toqueInicialX = e.touches[0].clientX;
 }, { passive: true });
 
-container.addEventListener('touchend', e => {
-    toqueFinalX = e.changedTouches[0].screenX;
-    verificarDeslize();
-}, { passive: true });
+container.addEventListener('touchend', (e) => {
+    toqueFinalX = e.changedTouches[0].clientX;
 
-function verificarDeslize() {
-    const sensibilidade = 50; // pixels mínimos para considerar um deslize
+    const diffX = toqueInicialX - toqueFinalX;
+    const sensibilidade = 50; // distância mínima do dedo
 
-    if (toqueInicialX - toqueFinalX > sensibilidade) {
-        // Deslizou para a ESQUERDA (Próximo)
-        if (seletorIndice < totalCards - 1) {
+    if (Math.abs(diffX) > sensibilidade) {
+        if (diffX > 0) {
+            // Deslizou para a esquerda -> Próximo
             irPara(seletorIndice + 1);
-        }
-    }
-
-    if (toqueFinalX - toqueInicialX > sensibilidade) {
-        // Deslizou para a DIREITA (Anterior)
-        if (seletorIndice > 0) {
+        } else {
+            // Deslizou para a direita -> Anterior
             irPara(seletorIndice - 1);
         }
     }
-}
+}, { passive: true });
