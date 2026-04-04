@@ -127,6 +127,8 @@ h1 {
     /* Um toque leve de museu antigo */
 }
 
+
+
 .info-inventora {
     text-align: center;
     max-width: 700px;
@@ -222,10 +224,6 @@ footer {
     }
 
 
-
-
-
-
     h1 {
         font-size: 1.8rem;
         /* Título menor para não quebrar linha feio */
@@ -260,5 +258,58 @@ footer {
         font-size: 1rem;
         /* Texto menor para caber na tela do celular */
         line-height: 1.4;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --- AJUSTE DO HEADER NO CELULAR --- */
+@media (max-width: 767px) {
+    header {
+        padding: 15px 10px;
+        /* Reduzi de 60px para 15px */
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+        /* Título bem mais discreto */
+        letter-spacing: 2px;
+    }
+
+    header p {
+        font-size: 0.8rem;
+        /* Subtítulo pequeno */
+        margin-top: 5px;
+    }
+
+    /* --- AJUSTE DA NAV (ANOS) NO CELULAR --- */
+    .nav-timeline {
+        padding: 5px;
+        /* Menos espaço em volta dos anos */
+        gap: 5px;
+        /* Anos mais próximos um do outro */
+    }
+
+    .ponto-tempo {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        /* Fonte menor para caber mais anos na visão */
+    }
+
+    /* Reduzir também o espaço do card para a imagem subir */
+    .card-inventora {
+        padding: 10px;
+    }
+
+    .info-inventora {
+        margin-top: 15px;
     }
 }
