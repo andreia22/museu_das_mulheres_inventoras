@@ -409,7 +409,7 @@ footer {
         width: 450px !important;
         /* Força o tamanho GRANDE */
         height: auto;
-        border: 2px solid #c5a059;
+        border: 1px solid #c5a059;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
