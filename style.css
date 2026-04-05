@@ -62,9 +62,9 @@ h1 {
     border-bottom: 2px solid #c5a059;
 }
 
-/* ESTRUTURA DO CARROSSEL (EXPOSIÇÃO) */
 .container-museu {
-    max-width: 1000px;
+    max-width: 95%;
+    /* Aumentamos aqui para dar espaço */
     margin: 40px auto;
     overflow: hidden;
     touch-action: pan-y;
@@ -311,5 +311,166 @@ footer {
 
     .info-inventora {
         margin-top: 15px;
+    }
+}
+
+
+
+
+
+
+/* No PC: Fica um do lado do outro */
+.conteudo-flex {
+    display: flex;
+    flex-direction: row;
+    /* Lado a lado */
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    /* Espaço entre os dois blocos */
+    width: 100%;
+}
+
+.bloco-secundario,
+.bloco-principal {
+    flex: 1;
+    text-align: center;
+}
+
+.img-auxiliar {
+    max-width: 250px;
+    height: auto;
+    border: 1px solid #c5a059;
+    padding: 5px;
+}
+
+/* No Celular: O bloco secundário vai para baixo do principal */
+@media (max-width: 767px) {
+    .conteudo-flex {
+        flex-direction: column;
+        /* Empilha verticalmente */
+        gap: 30px;
+    }
+
+    /* Se você quiser a imagem principal primeiro, 
+       e a nova imagem em baixo no celular, use: */
+    .conteudo-flex {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Truque para inverter a ordem no celular sem mudar o HTML: */
+    .bloco-principal {
+        order: 1;
+    }
+
+    .bloco-secundario {
+        order: 2;
+    }
+}
+
+
+
+
+
+/* --- CONFIGURAÇÃO PARA PC --- */
+
+/* --- CONFIGURAÇÃO PARA PC (Telas acima de 1024px) --- */
+@media (min-width: 1024px) {
+
+    /* 1. Abrimos o container para ocupar a tela toda */
+    .container-museu {
+        max-width: 95% !important;
+        overflow: visible !important;
+    }
+
+    /* 2. Forçamos o afastamento total */
+    .container-flex-card {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        /* Joga um pra cada ponta */
+        align-items: center;
+        width: 100%;
+        max-width: 1300px;
+        /* Largura confortável para os olhos */
+        margin: 0 auto;
+        gap: 50px;
+    }
+
+    /* 3. Bloco da Invenção (Esquerda) */
+    .bloco-invencao {
+        flex: 0 0 450px !important;
+        /* Não deixa a caixa diminuir */
+        text-align: center;
+    }
+
+    .img-invencao {
+        width: 450px !important;
+        /* Força o tamanho GRANDE */
+        height: auto;
+        border: 2px solid #c5a059;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .desc-invencao {
+        font-size: 1.5rem !important;
+        margin-top: 15px;
+        color: #c5a059;
+        font-weight: bold;
+    }
+
+    /* 4. Bloco da Inventora (Direita) */
+    .bloco-principal {
+        flex: 0 0 500px !important;
+        /* Mantém o tamanho da Marie Curie */
+        text-align: center;
+    }
+}
+
+.img-invencao {
+    width: 100%;
+    /* Faz a imagem ocupar todo o espaço dos 450px */
+    max-width: 400px;
+    /* Limite máximo para não estourar a qualidade */
+    height: auto;
+    border: 1px solid #c5a059;
+    /* Deixei a borda um pouco mais grossa */
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Adicionei uma sombra para dar profundidade */
+}
+
+/* --- TEXTO DA DESCRIÇÃO (o <p>) --- */
+.desc-invencao {
+    font-size: 1.3rem;
+    /* Aumentamos o tamanho da fonte */
+    color: #c5a059;
+    margin-top: 20px;
+    font-style: italic;
+    line-height: 1.5;
+    /* Melhora a leitura do parágrafo */
+    max-width: 400px;
+    /* Mantém o texto alinhado com a largura da imagem */
+}
+
+/* --- CONFIGURAÇÃO PARA CELULAR (Mantendo o que já deu certo) --- */
+@media (max-width: 767px) {
+    .container-flex-card {
+        display: flex;
+        /* Volta para flex no celular */
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bloco-principal {
+        order: 1;
+        width: 100%;
+    }
+
+    .bloco-invencao {
+        order: 2;
+        max-width: 100%;
+        justify-self: center;
     }
 }
